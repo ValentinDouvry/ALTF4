@@ -40,7 +40,7 @@ public class DeplacementJacob : MonoBehaviour
     {
         animateur = GetComponent<Animator>();
         corps = GetComponent<Rigidbody>();
-        StartCoroutine(sauter());
+        //StartCoroutine(sauter());
     }
 
     // Update is called once per frame
@@ -48,7 +48,7 @@ public class DeplacementJacob : MonoBehaviour
     {
         var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
         var z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
-        if(x!=0 || z !=0)
+        if (x != 0 || z != 0)
         {
             seDeplace = true;
         }
@@ -59,17 +59,26 @@ public class DeplacementJacob : MonoBehaviour
 
         transform.Rotate(0, x, 0);
         transform.Translate(0, 0, z);
-        
+
 
 
         animateur.SetBool("seDeplace", seDeplace);
 
         grounded = Physics.CheckSphere(groundCheck.position, rayonGround, whatIsGround);
         animateur.SetBool("grounded", grounded);
-        seDeplace = false;  
+        seDeplace = false;
 
-        
-        
+        if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        {
+            print("space");
+            animateur.SetBool("grounded", false);
+            //aSaute = true;
+            //yield return new WaitForSeconds(0.28f);
+            corps.AddForce(new Vector3(0, forceSaut));
+
+
+
+        }
     }
     
 
@@ -78,18 +87,29 @@ public class DeplacementJacob : MonoBehaviour
         aSaute = false;
         while(true)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && grounded && false)
+            if (Input.GetKeyDown(KeyCode.Space) && grounded)
             {
+                print("space");
                 animateur.SetBool("grounded", false);
-                aSaute = true;
-                yield return new WaitForSeconds(0.28f);
+                //aSaute = true;
+                //yield return new WaitForSeconds(0.28f);
                 corps.AddForce(new Vector3(0, forceSaut));
-                aSaute = false;
+                //aSaute = false;
 
             }
             yield return null;
         }
         
+    }
+
+    public void OnTriggerEnter(Collider collider)
+    {
+        if(collider.gameObject.tag == "Mortel")
+        {
+            print("meurt");
+        }
+
+
     }
 
 }
