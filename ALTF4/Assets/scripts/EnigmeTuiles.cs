@@ -20,7 +20,7 @@ public class EnigmeTuiles : MonoBehaviour {
 	void Update () {
         if (estValable)
         {
-            //renderer.material.color = red;
+            
         }
 	}
 

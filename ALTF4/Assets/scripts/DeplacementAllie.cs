@@ -15,7 +15,7 @@ public class DeplacementAllie : MonoBehaviour
     Camera cam1, cam2;
     GameObject piege1;
     GameObject[] tuiles = new GameObject[29];
-    EnigmeTuiles
+    //EnigmeTuiles
     
 
     private void Awake()
@@ -31,7 +31,7 @@ public class DeplacementAllie : MonoBehaviour
         cam2.enabled = false;
         piege1 = GameObject.Find("Piege1");
         corps2 = piege1.GetComponent<Rigidbody>();
-        tuiles = GameObject.FindGameObjectsWithTag("Tuiles");
+        tuiles = GameObject.FindGameObjectsWithTag("Tuile");
     }
 
     // Update is called once per frame
@@ -126,9 +126,7 @@ public class DeplacementAllie : MonoBehaviour
                 a.setEstValable(false);
                 setTuileSuivante(a.name);
             }
-            {
 
-            }
         }
     }
 
