@@ -12,7 +12,7 @@ public class DeplacementAllie : MonoBehaviour
     public bool estMort = false;
     Camera cam1, cam2;
     GameObject piege1;
-    bool actifP = false, actifS = false; 
+    bool actifP = true, actifS = false;
 
     private void Awake()
     {
@@ -99,7 +99,8 @@ public class DeplacementAllie : MonoBehaviour
             cam1.enabled = false;
             cam2.enabled = true;
             yield return new WaitForSeconds(2);
-            transform.position = new Vector3(0,0,0);
+            transform.position = new Vector3(0, 0, 0);
+            finMort = true;
         }
     }
 
@@ -112,7 +113,7 @@ public class DeplacementAllie : MonoBehaviour
             corps2.velocity = Vector3.zero;
             corps2.angularVelocity = Vector3.zero;
         }
-        if(collision.gameObject.tag == "Tuile")
+        if (collision.gameObject.tag == "Tuile")
         {
             GameObject tuileCourante = collision.gameObject;
             var a = tuileCourante.GetComponent<EnigmeTuiles>();
@@ -132,13 +133,14 @@ public class DeplacementAllie : MonoBehaviour
             }*/
             if (a.getEstValableS())
             {
-                print("Ui");
                 actifS = true;
-                if(actifP && actifS)
+                if (actifP && actifS)
                 {
                     setTuileSuivante(a.name);
                 }
-            } else {
+            }
+            else
+            {
                 cam1.enabled = false;
                 cam2.enabled = true;
                 yield return new WaitForSeconds(2);

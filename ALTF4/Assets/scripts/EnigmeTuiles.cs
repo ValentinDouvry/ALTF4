@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnigmeTuiles : MonoBehaviour {
 
-    public bool estValableS = false, estValableP = false, actifS, actifP;
+    public bool estValableS = false, estValableP = false;
     Rigidbody corps;
 
     private void Awake()
