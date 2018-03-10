@@ -8,6 +8,7 @@ TagManager:
   - Mortel
   - Action
   - Tuile
+  - Jacob
   layers:
   - Default
   - TransparentFX
