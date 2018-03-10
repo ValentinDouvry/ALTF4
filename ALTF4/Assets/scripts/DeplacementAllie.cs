@@ -6,13 +6,11 @@ public class DeplacementAllie : MonoBehaviour
 {
 
     Rigidbody corps, corps2, cplat1, cplat2, cplat3;
-    public Vector3 speed;
-    //public int speed = 10;
-    //bool seDeplace;
     public bool estMort = false;
     Camera cam1, cam2;
     GameObject piege1, plat1, plat2, plat3;
-    bool actifP = true, actifS = false, boutons = false;
+    bool actifP = true, actifS = false, boutons = false, action = false;
+    Animator animation;
 
     private void Awake()
     {
@@ -33,67 +31,28 @@ public class DeplacementAllie : MonoBehaviour
         cplat1 = plat1.GetComponent<Rigidbody>();
         cplat2 = plat2.GetComponent<Rigidbody>();
         cplat3 = plat3.GetComponent<Rigidbody>();
+        animation = this.gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        /*
-        if (!seDeplace)
-        {
-            float interpolatinFactor = currentDecelTime / decelTime;
-            Vector3 move = Vector3.Slerp(speed, Vector3.zero, interpolatinFactor);
-            transform.position -= move;
-            currentDecelTime += Time.deltaTime;
-        }
-        */
-    }
+    void Update() {}
 
     public void FixedUpdate()
     {
-        //seDeplace = false;
         Vector3 direction = new Vector3();
 
         if (Input.GetKey(KeyCode.UpArrow))
-        {
             direction.z += 1f;
-            //seDeplace = true;
-        }
-
         if (Input.GetKey(KeyCode.DownArrow))
-        {
             direction.z -= 1f;
-            //seDeplace = true;
-
-        }
-
         if (Input.GetKey(KeyCode.LeftArrow))
-        {
             direction.x -= 1f;
-            //seDeplace = true;
-
-        }
-
         if (Input.GetKey(KeyCode.RightArrow))
-        {
             direction.x += 1f;
-            //seDeplace = true;
-
-        }
-
         if (Input.GetKey(KeyCode.Space))
-        {
             direction.y += 1f;
-            //seDeplace = true;
-
-        }
-
         if (Input.GetKey(KeyCode.LeftShift))
-        {
             direction.y -= 1f;
-            //seDeplace = true;
-
-        }
 
         corps.velocity = (direction * Time.deltaTime * 100);
     }
@@ -115,61 +74,6 @@ public class DeplacementAllie : MonoBehaviour
 
     private IEnumerator OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Action" && Input.GetKey(KeyCode.E))
-        {
-            if(collision.gameObject.name == "Bouton")
-            {
-                corps2.velocity = (new Vector3(0, 0, 200) * Time.deltaTime * 3);
-                yield return new WaitForSeconds(2);
-                corps2.velocity = Vector3.zero;
-                corps2.angularVelocity = Vector3.zero;
-            }
-            if (!boutons)
-            {
-                if (collision.gameObject.name == "b1")
-                {
-                    boutons = true;
-                    cplat1.velocity = (new Vector3(0, 100, 0) * Time.deltaTime * 3);
-                    cplat3.velocity = (new Vector3(0, -100, 0) * Time.deltaTime * 3);
-                    yield return new WaitForSeconds(0.5f);
-                    cplat1.velocity = Vector3.zero;
-                    cplat3.velocity = Vector3.zero;
-                    cplat1.angularVelocity = Vector3.zero;
-                    cplat3.angularVelocity = Vector3.zero;
-                    boutons = false;
-                }
-                if (collision.gameObject.name == "b2")
-                {
-                    boutons = true;
-                    cplat1.velocity = (new Vector3(0, -100, 0) * Time.deltaTime * 3);
-                    cplat2.velocity = (new Vector3(0, +100, 0) * Time.deltaTime * 3);
-                    cplat3.velocity = (new Vector3(0, -100, 0) * Time.deltaTime * 3);
-                    yield return new WaitForSeconds(0.5f);
-                    cplat1.velocity = Vector3.zero;
-                    cplat2.velocity = Vector3.zero;
-                    cplat3.velocity = Vector3.zero;
-                    cplat2.angularVelocity = Vector3.zero;
-                    cplat1.angularVelocity = Vector3.zero;
-                    cplat3.angularVelocity = Vector3.zero;
-                    boutons = false;
-                }
-                if (collision.gameObject.name == "b3")
-                {
-                    boutons = true;
-                    cplat1.velocity = (new Vector3(0, +200, 0) * Time.deltaTime * 3);
-                    cplat2.velocity = (new Vector3(0, -200, 0) * Time.deltaTime * 3);
-                    cplat3.velocity = (new Vector3(0, +100, 0) * Time.deltaTime * 3);
-                    yield return new WaitForSeconds(0.5f);
-                    cplat1.velocity = Vector3.zero;
-                    cplat2.velocity = Vector3.zero;
-                    cplat3.velocity = Vector3.zero;
-                    cplat2.angularVelocity = Vector3.zero;
-                    cplat1.angularVelocity = Vector3.zero;
-                    cplat3.angularVelocity = Vector3.zero;
-                    boutons = false;
-                }
-            }
-        }
         if (collision.gameObject.tag == "Tuile")
         {
             GameObject tuileCourante = collision.gameObject;
@@ -205,6 +109,7 @@ public class DeplacementAllie : MonoBehaviour
             }
 
         }
+
     }
 
     private void OnCollisionExit(Collision collision)
