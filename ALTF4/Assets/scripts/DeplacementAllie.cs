@@ -15,6 +15,7 @@ public class DeplacementAllie : MonoBehaviour
     Camera cam1, cam2;
     GameObject piege1;
     GameObject[] tuiles = new GameObject[29];
+    bool actifP, actifS = true;
     //EnigmeTuiles
     
 
@@ -121,10 +122,19 @@ public class DeplacementAllie : MonoBehaviour
         {
             GameObject tuileCourante = collision.gameObject;
             var a = tuileCourante.GetComponent<EnigmeTuiles>();
-            if (a.getEstValable())
+            if (a.getEstValableP())
             {
-                a.setEstValable(false);
-                setTuileSuivante(a.name);
+                actifP = true;
+                if(actifP && actifS)
+                {
+                    setTuileSuivante(a.name);
+                }
+            } else
+            {
+                cam1.enabled = false;
+                cam2.enabled = true;
+                yield return new WaitForSeconds(2);
+                transform.position = new Vector3(0, 0, 0);
             }
 
         }
@@ -132,12 +142,59 @@ public class DeplacementAllie : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        cam1.enabled = true;
-        cam2.enabled = false;
+        if (collision.gameObject.tag == "Mortel")
+        {
+            cam1.enabled = true;
+            cam2.enabled = false;
+        }
+        if (collision.gameObject.tag == "Tuile")
+        {
+            GameObject tuileCourante = collision.gameObject;
+            var a = tuileCourante.GetComponent<EnigmeTuiles>();
+            if (a.estValableP)
+            {
+                a.setEstValableP(false);
+                actifP = false;
+            } else
+            {
+                cam1.enabled = true;
+                cam2.enabled = false;
+            }
+
+        }
     }
 
     private void setTuileSuivante(string tuileCourante)
     {
-        int.Parse(tuileCourante);
+        if(tuileCourante == "ParcoursP1")
+        {
+            GameObject tuile = GameObject.Find("ParcoursP2");
+            var a = tuile.GetComponent<EnigmeTuiles>();
+            a.setEstValableP(true);
+        }
+        if (tuileCourante == "ParcoursP2")
+        {
+            GameObject tuile = GameObject.Find("ParcoursP3");
+            var a = tuile.GetComponent<EnigmeTuiles>();
+            a.setEstValableP(true);
+        }
+        if (tuileCourante == "ParcoursP3")
+        {
+            GameObject tuile = GameObject.Find("ParcoursP4");
+            var a = tuile.GetComponent<EnigmeTuiles>();
+            a.setEstValableP(true);
+        }
+        if (tuileCourante == "ParcoursP4")
+        {
+            GameObject tuile = GameObject.Find("ParcoursP5");
+            var a = tuile.GetComponent<EnigmeTuiles>();
+            a.setEstValableP(true);
+        }
+        if (tuileCourante == "ParcoursP5")
+        {
+            GameObject tuile = GameObject.Find("ParcoursP6");
+            var a = tuile.GetComponent<EnigmeTuiles>();
+            a.setEstValableP(true);
+        }
     }
 }

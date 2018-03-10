@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnigmeTuiles : MonoBehaviour {
 
-    public bool estValable;
+    public bool estValableSK = false, estValableP = false, actifS, actifP;
     Rigidbody corps;
 
     private void Awake()
@@ -18,19 +18,33 @@ public class EnigmeTuiles : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (estValable)
+        if (estValableSK)
         {
             
         }
+        if (estValableP)
+        {
+
+        }
 	}
 
-    public void setEstValable(bool valeur)
+    public void setEstValableSK(bool valeur)
     {
-        estValable = valeur;
+        estValableSK = valeur;
     }
 
-    public bool getEstValable()
+    public void setEstValableP(bool valeur)
     {
-        return estValable;
+        estValableP = valeur;
+    }
+
+    public bool getEstValableSK()
+    {
+        return estValableSK;
+    }
+
+    public bool getEstValableP()
+    {
+        return estValableP;
     }
 }
