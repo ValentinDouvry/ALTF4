@@ -96,7 +96,7 @@ public class JacobController : MonoBehaviour {
         }  */ 
         
 
-        if (seDeplace)
+        if (seDeplace && grounded)
         {
             speed = 100;
             corps.velocity = (direction * Time.deltaTime * speed);
