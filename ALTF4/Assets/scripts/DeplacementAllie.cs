@@ -8,16 +8,11 @@ public class DeplacementAllie : MonoBehaviour
     Rigidbody corps, corps2;
     public Vector3 speed;
     //public int speed = 10;
-    float decelTime = 2;
-    float currentDecelTime = 0;
     //bool seDeplace;
     public bool estMort = false;
     Camera cam1, cam2;
     GameObject piege1;
-    GameObject[] tuiles = new GameObject[29];
-    bool actifP, actifS = true;
-    //EnigmeTuiles
-    
+    bool actifP = false, actifS = false; 
 
     private void Awake()
     {
@@ -32,7 +27,6 @@ public class DeplacementAllie : MonoBehaviour
         cam2.enabled = false;
         piege1 = GameObject.Find("Piege1");
         corps2 = piege1.GetComponent<Rigidbody>();
-        tuiles = GameObject.FindGameObjectsWithTag("Tuile");
     }
 
     // Update is called once per frame
@@ -122,7 +116,7 @@ public class DeplacementAllie : MonoBehaviour
         {
             GameObject tuileCourante = collision.gameObject;
             var a = tuileCourante.GetComponent<EnigmeTuiles>();
-            if (a.getEstValableP())
+            /*if (a.getEstValableP())
             {
                 actifP = true;
                 if(actifP && actifS)
@@ -131,6 +125,20 @@ public class DeplacementAllie : MonoBehaviour
                 }
             } else
             {
+                cam1.enabled = false;
+                cam2.enabled = true;
+                yield return new WaitForSeconds(2);
+                transform.position = new Vector3(0, 0, 0);
+            }*/
+            if (a.getEstValableS())
+            {
+                print("Ui");
+                actifS = true;
+                if(actifP && actifS)
+                {
+                    setTuileSuivante(a.name);
+                }
+            } else {
                 cam1.enabled = false;
                 cam2.enabled = true;
                 yield return new WaitForSeconds(2);
@@ -151,11 +159,21 @@ public class DeplacementAllie : MonoBehaviour
         {
             GameObject tuileCourante = collision.gameObject;
             var a = tuileCourante.GetComponent<EnigmeTuiles>();
-            if (a.estValableP)
+            /*if (a.estValableP)
             {
                 a.setEstValableP(false);
                 actifP = false;
             } else
+            {
+                cam1.enabled = true;
+                cam2.enabled = false;
+            }*/
+            if (a.estValableS)
+            {
+                a.setEstValableS(false);
+                actifS = false;
+            }
+            else
             {
                 cam1.enabled = true;
                 cam2.enabled = false;
@@ -166,6 +184,7 @@ public class DeplacementAllie : MonoBehaviour
 
     private void setTuileSuivante(string tuileCourante)
     {
+        /*
         if(tuileCourante == "ParcoursP1")
         {
             GameObject tuile = GameObject.Find("ParcoursP2");
@@ -195,6 +214,36 @@ public class DeplacementAllie : MonoBehaviour
             GameObject tuile = GameObject.Find("ParcoursP6");
             var a = tuile.GetComponent<EnigmeTuiles>();
             a.setEstValableP(true);
+        }*/
+        if (tuileCourante == "ParcoursS1")
+        {
+            GameObject tuile = GameObject.Find("ParcoursS2");
+            var a = tuile.GetComponent<EnigmeTuiles>();
+            a.setEstValableS(true);
+        }
+        if (tuileCourante == "ParcoursS2")
+        {
+            GameObject tuile = GameObject.Find("ParcoursS3");
+            var a = tuile.GetComponent<EnigmeTuiles>();
+            a.setEstValableS(true);
+        }
+        if (tuileCourante == "ParcoursS3")
+        {
+            GameObject tuile = GameObject.Find("ParcoursS4");
+            var a = tuile.GetComponent<EnigmeTuiles>();
+            a.setEstValableS(true);
+        }
+        if (tuileCourante == "ParcoursS4")
+        {
+            GameObject tuile = GameObject.Find("ParcoursS5");
+            var a = tuile.GetComponent<EnigmeTuiles>();
+            a.setEstValableS(true);
+        }
+        if (tuileCourante == "ParcoursS5")
+        {
+            GameObject tuile = GameObject.Find("ParcoursS6");
+            var a = tuile.GetComponent<EnigmeTuiles>();
+            a.setEstValableS(true);
         }
     }
 }
