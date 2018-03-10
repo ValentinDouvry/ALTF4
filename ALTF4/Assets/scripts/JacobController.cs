@@ -62,7 +62,7 @@ public class JacobController : MonoBehaviour {
         float v = Input.GetAxisRaw("Vertical");
 
         //Move(h, v);
-        Turning();
+        //Turning();
 
         Vector3 direction = new Vector3();
 
@@ -82,7 +82,7 @@ public class JacobController : MonoBehaviour {
             
         }
 
-        /*if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             direction.x -= 1f;
             seDeplace = true;
@@ -93,10 +93,10 @@ public class JacobController : MonoBehaviour {
             direction.x += 1f;
             seDeplace = true;
             
-        }  */ 
+        }  
         
 
-        if (seDeplace && grounded)
+        if (seDeplace)
         {
             speed = 100;
             corps.velocity = (direction * Time.deltaTime * speed);
@@ -121,7 +121,7 @@ public class JacobController : MonoBehaviour {
         corps.MovePosition(transform.position + movement);
     }*/
 
-    void Turning()
+    /*void Turning()
     {
         // Create a ray from the mouse cursor on screen in the direction of the camera.
         Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -145,5 +145,5 @@ public class JacobController : MonoBehaviour {
             // Set the player's rotation to this new rotation.
             corps.MoveRotation(newRotation);
         }
-    }
+    }*/
 }

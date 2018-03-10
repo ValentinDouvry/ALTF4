@@ -100,7 +100,7 @@ public class DeplacementAllie : MonoBehaviour
             cam2.enabled = true;
             yield return new WaitForSeconds(2);
             transform.position = new Vector3(0, 0, 0);
-            finMort = true;
+            //finMort = true;
         }
     }
 
