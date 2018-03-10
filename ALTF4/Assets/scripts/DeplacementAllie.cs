@@ -102,11 +102,14 @@ public class DeplacementAllie : MonoBehaviour
     {
         if (collision.gameObject.tag == "Mortel")
         {
+            corps.isKinematic = true;
             cam1.enabled = false;
             cam2.enabled = true;
             yield return new WaitForSeconds(2);
             transform.position = new Vector3(0, 0, 0);
-            //finMort = true;
+            corps.isKinematic = false;
+            cam1.enabled = true;
+            cam2.enabled = false;
         }
     }
 
@@ -114,7 +117,7 @@ public class DeplacementAllie : MonoBehaviour
     {
         if (collision.gameObject.tag == "Action" && Input.GetKey(KeyCode.E))
         {
-            if(collision.gameObject.name == "Piege1")
+            if(collision.gameObject.name == "Bouton")
             {
                 corps2.velocity = (new Vector3(0, 0, 200) * Time.deltaTime * 3);
                 yield return new WaitForSeconds(2);
@@ -206,11 +209,6 @@ public class DeplacementAllie : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Mortel")
-        {
-            cam1.enabled = true;
-            cam2.enabled = false;
-        }
         if (collision.gameObject.tag == "Tuile")
         {
             GameObject tuileCourante = collision.gameObject;
