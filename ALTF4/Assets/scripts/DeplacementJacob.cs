@@ -31,6 +31,7 @@ public class DeplacementJacob : MonoBehaviour
     public float X;
     public float Z;
     public float forceSaut = 100;
+    public bool aSaute;
 
 
 
@@ -74,13 +75,16 @@ public class DeplacementJacob : MonoBehaviour
 
     IEnumerator sauter()
     {
+        aSaute = false;
         while(true)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && grounded)
+            if (Input.GetKeyDown(KeyCode.Space) && grounded && false)
             {
                 animateur.SetBool("grounded", false);
+                aSaute = true;
                 yield return new WaitForSeconds(0.28f);
                 corps.AddForce(new Vector3(0, forceSaut));
+                aSaute = false;
 
             }
             yield return null;

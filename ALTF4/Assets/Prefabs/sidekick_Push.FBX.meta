@@ -1,0 +1,204 @@
+fileFormatVersion: 2
+guid: ad432f8eb2771ba46a13ac3a0518034a
+timeCreated: 1520713913
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Side_Kick
+    100002: //RootNode
+    100004: SK_Bone_Hip
+    100006: SK_Bone_Hip_End
+    100008: SK_Bone_Queu_01
+    100010: SK_Bone_Queu_02
+    100012: SK_Bone_Queu_03
+    100014: SK_Bone_Queu_End
+    100016: SK_Bone_Tongue_01
+    100018: SK_Bone_Tongue_02
+    100020: SK_Bone_Tongue_03
+    100022: SK_Bone_Tongue_End
+    100024: SK_Ctrl_COG
+    100026: SK_Ctrl_Global
+    100028: SK_Ctrl_Queu_01
+    100030: SK_Ctrl_Queu_02
+    100032: SK_Ctrl_Queu_03
+    100034: SK_Ctrl_Tongue_01
+    100036: SK_Ctrl_Tongue_02
+    100038: SK_Ctrl_Tongue_03
+    100040: SK_L_Bone_Ail_01
+    100042: SK_L_Bone_Ail_01_End
+    100044: SK_L_Bone_Ail_02
+    100046: SK_L_Bone_Ail_02_End
+    100048: SK_L_Bone_LegB_01
+    100050: SK_L_Bone_LegB_02
+    100052: SK_L_Bone_LegB_End
+    100054: SK_L_Bone_LegF_01
+    100056: SK_L_Bone_LegF_02
+    100058: SK_L_Bone_LegF_End
+    100060: SK_L_Ctrl_Ail_01
+    100062: SK_L_Ctrl_Ail_02
+    100064: SK_L_Ctrl_LegB
+    100066: SK_L_Ctrl_LegF
+    100068: SK_L_Ctrl_UpVectorB
+    100070: SK_L_Ctrl_UpVectorF
+    100072: SK_L_IK_B
+    100074: SK_L_IK_B 1
+    100076: SK_R_Bone_Ail_01
+    100078: SK_R_Bone_Ail_01_End
+    100080: SK_R_Bone_Ail_02
+    100082: SK_R_Bone_Ail_02_End
+    100084: SK_R_Bone_LegB_01
+    100086: SK_R_Bone_LegB_02
+    100088: SK_R_Bone_LegB_End
+    100090: SK_R_Bone_LegF_01
+    100092: SK_R_Bone_LegF_02
+    100094: SK_R_Bone_LegF_End
+    100096: SK_R_Ctrl_Ail_01
+    100098: SK_R_Ctrl_Ail_02
+    100100: SK_R_Ctrl_LegB
+    100102: SK_R_Ctrl_LegF
+    100104: SK_R_Ctrl_UpVectorB
+    100106: SK_R_Ctrl_UpVectorF
+    100108: SK_R_IK_B
+    100110: SK_R_IK_B 1
+    400000: Side_Kick
+    400002: //RootNode
+    400004: SK_Bone_Hip
+    400006: SK_Bone_Hip_End
+    400008: SK_Bone_Queu_01
+    400010: SK_Bone_Queu_02
+    400012: SK_Bone_Queu_03
+    400014: SK_Bone_Queu_End
+    400016: SK_Bone_Tongue_01
+    400018: SK_Bone_Tongue_02
+    400020: SK_Bone_Tongue_03
+    400022: SK_Bone_Tongue_End
+    400024: SK_Ctrl_COG
+    400026: SK_Ctrl_Global
+    400028: SK_Ctrl_Queu_01
+    400030: SK_Ctrl_Queu_02
+    400032: SK_Ctrl_Queu_03
+    400034: SK_Ctrl_Tongue_01
+    400036: SK_Ctrl_Tongue_02
+    400038: SK_Ctrl_Tongue_03
+    400040: SK_L_Bone_Ail_01
+    400042: SK_L_Bone_Ail_01_End
+    400044: SK_L_Bone_Ail_02
+    400046: SK_L_Bone_Ail_02_End
+    400048: SK_L_Bone_LegB_01
+    400050: SK_L_Bone_LegB_02
+    400052: SK_L_Bone_LegB_End
+    400054: SK_L_Bone_LegF_01
+    400056: SK_L_Bone_LegF_02
+    400058: SK_L_Bone_LegF_End
+    400060: SK_L_Ctrl_Ail_01
+    400062: SK_L_Ctrl_Ail_02
+    400064: SK_L_Ctrl_LegB
+    400066: SK_L_Ctrl_LegF
+    400068: SK_L_Ctrl_UpVectorB
+    400070: SK_L_Ctrl_UpVectorF
+    400072: SK_L_IK_B
+    400074: SK_L_IK_B 1
+    400076: SK_R_Bone_Ail_01
+    400078: SK_R_Bone_Ail_01_End
+    400080: SK_R_Bone_Ail_02
+    400082: SK_R_Bone_Ail_02_End
+    400084: SK_R_Bone_LegB_01
+    400086: SK_R_Bone_LegB_02
+    400088: SK_R_Bone_LegB_End
+    400090: SK_R_Bone_LegF_01
+    400092: SK_R_Bone_LegF_02
+    400094: SK_R_Bone_LegF_End
+    400096: SK_R_Ctrl_Ail_01
+    400098: SK_R_Ctrl_Ail_02
+    400100: SK_R_Ctrl_LegB
+    400102: SK_R_Ctrl_LegF
+    400104: SK_R_Ctrl_UpVectorB
+    400106: SK_R_Ctrl_UpVectorF
+    400108: SK_R_IK_B
+    400110: SK_R_IK_B 1
+    2100000: No Name
+    4300000: Side_Kick
+    7400000: Push
+    9500000: //RootNode
+    13700000: Side_Kick
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
