@@ -11,6 +11,9 @@ public class DeplacementAllie : MonoBehaviour
     float decelTime = 2;
     float currentDecelTime = 0;
     bool seDeplace;
+    public bool estMort = false;
+    Camera cam1, cam2;
+    
 
     private void Awake()
     {
@@ -19,7 +22,10 @@ public class DeplacementAllie : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        cam1 = Camera.main;
+        cam2 = GameObject.Find("CameraMort").GetComponent<Camera>();
+        cam1.enabled = true;
+        cam2.enabled = false;
     }
 
     // Update is called once per frame
@@ -77,7 +83,24 @@ public class DeplacementAllie : MonoBehaviour
             direction.y -= 1f; seDeplace = true;
 
         }
+
         corps.velocity = (direction * Time.deltaTime * 100);
-        //corps.velocity = (direction * Time.deltaTime * speed);
+    }
+
+    private IEnumerator OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Mortel")
+        {
+            cam1.enabled = false;
+            cam2.enabled = true;
+            yield return new WaitForSeconds(2);
+            transform.position = new Vector3(0,0,0);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        cam1.enabled = true;
+        cam2.enabled = false;
     }
 }
