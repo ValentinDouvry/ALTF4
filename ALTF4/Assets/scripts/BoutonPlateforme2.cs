@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoutonPlateforme2 : MonoBehaviour {
 
     GameObject plateforme1, plateforme2, plateforme3;
+    bool action = false;
 
     private void Awake()
     {
@@ -17,11 +18,21 @@ public class BoutonPlateforme2 : MonoBehaviour {
     void Start() {}
 
     // Update is called once per frame
-    void Update() {}
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.E))
+        {
+            action = true;
+        }
+        else
+        {
+            action = false;
+        }
+    }
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Player" && Input.GetKey(KeyCode.E))
+        if (collision.gameObject.tag == "Player" && action)
         {
             plateforme1.GetComponent<Plateforme1>().setAction(true, 2);
             plateforme2.GetComponent<Plateforme2>().setAction(true, 2);

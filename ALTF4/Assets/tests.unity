@@ -270,6 +270,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &38445506
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -323,6 +325,60 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 38445502}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &99700594
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4851447145949918, guid: 7a8bc911af924b4448a57844efb101e9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851447145949918, guid: 7a8bc911af924b4448a57844efb101e9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851447145949918, guid: 7a8bc911af924b4448a57844efb101e9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 8.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851447145949918, guid: 7a8bc911af924b4448a57844efb101e9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851447145949918, guid: 7a8bc911af924b4448a57844efb101e9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851447145949918, guid: 7a8bc911af924b4448a57844efb101e9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851447145949918, guid: 7a8bc911af924b4448a57844efb101e9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851447145949918, guid: 7a8bc911af924b4448a57844efb101e9, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1528653577920284, guid: 7a8bc911af924b4448a57844efb101e9, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084283774543514, guid: 7a8bc911af924b4448a57844efb101e9, type: 2}
+      propertyPath: m_Name
+      value: CameraJacob
+      objectReference: {fileID: 0}
+    - target: {fileID: 1528653577920284, guid: 7a8bc911af924b4448a57844efb101e9, type: 2}
+      propertyPath: m_Name
+      value: Jacob
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7a8bc911af924b4448a57844efb101e9, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &117927706
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,6 +440,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &117927710
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -592,6 +650,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &175694814
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -768,6 +828,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &349331350
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1079,6 +1141,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &425809146
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1193,6 +1257,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &448362706
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1372,6 +1438,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &509669874
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1486,6 +1554,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &542399783
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1600,6 +1670,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &619738860
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1929,6 +2001,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &756786132
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2307,6 +2381,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &863639077
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2421,6 +2497,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &879610678
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2535,6 +2613,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &987441741
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2736,6 +2816,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &1039603181
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2963,6 +3045,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &1101856953
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3077,6 +3161,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &1125071031
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3142,7 +3228,7 @@ GameObject:
   - component: {fileID: 1175322521}
   - component: {fileID: 1175322520}
   m_Layer: 0
-  m_Name: CameraPrincipale
+  m_Name: CameraGrimace
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3345,6 +3431,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &1298064495
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3459,6 +3547,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &1314271716
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3658,6 +3748,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &1405857410
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3772,6 +3864,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &1416661035
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3998,6 +4092,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &1455276704
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4112,6 +4208,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &1492598258
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4410,6 +4508,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &1591727980
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4524,6 +4624,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 1
+  actifS: 0
+  actifP: 1
 --- !u!23 &1634332523
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4751,6 +4853,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &1681192537
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4865,6 +4969,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 1
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &1840718236
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4979,6 +5085,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &1901968749
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5093,6 +5201,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &1947331073
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5207,6 +5317,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &1977484724
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5321,6 +5433,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estValableS: 0
   estValableP: 0
+  actifS: 0
+  actifP: 1
 --- !u!23 &2047582368
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5566,8 +5680,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.4390948, y: 2.1902938, z: 1.0335727}
+  m_Center: {x: 0.7195472, y: 0.5951465, z: 0.11856693}
 --- !u!33 &2136205925
 MeshFilter:
   m_ObjectHideFlags: 0

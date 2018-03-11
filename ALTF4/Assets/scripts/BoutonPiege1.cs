@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoutonPiege1 : MonoBehaviour {
 
     GameObject piege;
+    bool action = false;
 
     private void Awake()
     {
@@ -15,11 +16,20 @@ public class BoutonPiege1 : MonoBehaviour {
     void Start() {}
 	
 	// Update is called once per frame
-	void Update() {}
+	void Update()
+    {
+        if (Input.GetKey(KeyCode.E))
+        {
+            action = true;
+        } else
+        {
+            action = false;
+        }
+    }
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Player" && Input.GetKey(KeyCode.E))
+        if (collision.gameObject.tag == "Player" && action)
         {
             piege.GetComponent<Piege1>().setAction(true);
         }

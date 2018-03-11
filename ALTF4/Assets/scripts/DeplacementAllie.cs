@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class DeplacementAllie : MonoBehaviour
 {
-
-    Rigidbody corps;
+    Rigidbody corps, corps2;
     public bool estMort = false;
-    Camera cam1, cam2;
+    Camera cam1, cam2, cam3;
     bool actifP = true, actifS = false, boutons = false, action = false;
     Animator animator;
+    bool actionB = false;
+
+    Vector3 direction;
 
     private void Awake()
     {
@@ -18,19 +20,38 @@ public class DeplacementAllie : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        cam1 = Camera.main;
+        cam1 = GameObject.Find("CameraGrimace").GetComponent<Camera>();
         cam2 = GameObject.Find("CameraMort").GetComponent<Camera>();
+        cam3 = GameObject.Find("CameraJacob").GetComponent<Camera>();
         cam1.enabled = true;
         cam2.enabled = false;
+        cam3.enabled = false;
         animator = this.gameObject.GetComponent<Animator>();
+        corps2 = GameObject.Find("Jacob").GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update() {}
-
-    public void FixedUpdate()
+    void Update()
     {
-        Vector3 direction = new Vector3();
+        direction = Vector3.zero;
+        if (Input.GetKey(KeyCode.E))
+        {
+            actionB = true;
+        }
+        else
+        {
+            actionB = false;
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            // Pas normal que ca s'affiche en boucle
+            Debug.Log("TEST JO");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            changerCamera();
+        }
 
         if (Input.GetKey(KeyCode.UpArrow))
             direction.z += 1f;
@@ -44,7 +65,10 @@ public class DeplacementAllie : MonoBehaviour
             direction.y += 1f;
         if (Input.GetKey(KeyCode.LeftShift))
             direction.y -= 1f;
+    }
 
+    public void FixedUpdate()
+    {
         corps.velocity = (direction * Time.deltaTime * 100);
     }
 
@@ -54,12 +78,19 @@ public class DeplacementAllie : MonoBehaviour
         {
             mort();
         }
-        if (collision.gameObject.tag == "Action" && Input.GetKey(KeyCode.E))
+        if (collision.gameObject.tag == "Action" && actionB)
         {
             action = true;
         }
     }
 
+
+    private void changerCamera()
+    {
+        cam1.enabled = !cam1.enabled;
+        corps.isKinematic = !corps.isKinematic;
+        print(gameObject.name + " changerCamera()");
+    }
 
     private void OnCollisionExit(Collision collision)
     {

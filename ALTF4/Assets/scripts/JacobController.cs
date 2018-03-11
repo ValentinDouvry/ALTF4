@@ -20,6 +20,8 @@ public class JacobController : MonoBehaviour {
 
     Quaternion newRotation;
 
+    Vector3 direction;
+
 
 
     private void Awake()
@@ -37,6 +39,30 @@ public class JacobController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        seDeplace = false;
+
+        //Il ne faut pas mettre de input.getkey dans autre chose que le Update()
+        //Je pense que c'est ce qui cause les problèmes
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            direction.z += 1f;
+            seDeplace = true;
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            direction.z -= 1f;
+            seDeplace = true;
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            direction.x -= 1f;
+            seDeplace = true;
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            direction.x += 1f;
+            seDeplace = true;
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -59,7 +85,7 @@ public class JacobController : MonoBehaviour {
         animateur.SetFloat("speed", speed);
         grounded = Physics.CheckSphere(groundCheck.position, rayonGround, whatIsGround);
         animateur.SetBool("grounded", grounded);
-        seDeplace = false;
+        
 
         //float h = Input.GetAxisRaw("Horizontal");
         //float v = Input.GetAxisRaw("Vertical");
@@ -67,37 +93,7 @@ public class JacobController : MonoBehaviour {
         //Move(h, v);
         //Turning();
 
-        Vector3 direction = new Vector3();
-
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            direction.z += 1f;
-            seDeplace = true;
-            
-            
-        }
-
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            direction.z -= 1f;
-            seDeplace = true;
-            
-        }
-
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            direction.x -= 1f;
-            seDeplace = true;
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            direction.x += 1f;
-            seDeplace = true;
-            
-        }  
         
-
         if (seDeplace)
         {
             speed = 100;
