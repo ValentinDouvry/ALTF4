@@ -5,35 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class OptionMenu : MonoBehaviour
 {
-    public GameObject menuPrincipal,
-    menuCommandes,
-    menus,
-    menuFinDePartie;
+    public GameObject menuPrincipal;
 
-    public void quitter()
+    public void ButtonQuitter()
     {
         Debug.Log("Le jeu va se fermer!");
         Application.Quit();
     }
 
-    public void commandes()
-    {
-        menuCommandes.SetActive(true);
-        menuPrincipal.SetActive(false);
+    
 
-    }
-
-    public void jouer()
+    public void ButtonJouer()
     {
         SceneManager.LoadScene(1);
+        print("Jouer");
     }
 
-    public void retour()
-    {
-        menuPrincipal.SetActive(true);
-        menuCommandes.SetActive(false);
-
-    }
+    
 
     public void recommencer()
     {

@@ -43,14 +43,14 @@ public class DeplacementJacob : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        corps.isKinematic = true;
-        cam1 = GameObject.Find("CameraJacob").GetComponent<Camera>();
-        cam2 = GameObject.Find("CameraMort").GetComponent<Camera>();
-        cam3 = GameObject.Find("CameraGrimace").GetComponent<Camera>();
+        //corps.isKinematic = true;
+        //cam1 = GameObject.Find("CameraJacob").GetComponent<Camera>();
+        //cam2 = GameObject.Find("CameraMort").GetComponent<Camera>();
+        //cam3 = GameObject.Find("CameraGrimace").GetComponent<Camera>();
         animateur = GetComponent<Animator>();
         
         
-        corps2 = GameObject.Find("Grimace").GetComponent<Rigidbody>();
+        //corps2 = GameObject.Find("Grimace").GetComponent<Rigidbody>();
         //StartCoroutine(sauter());
     }
 
