@@ -102,13 +102,16 @@ public class DeplacementJacob : MonoBehaviour
         
     }
 
-    public void OnTriggerEnter(Collider collider)
+    public void OnCollisionStay(Collision collision)
     {
-        if(collider.gameObject.tag == "Mortel")
+        if(collision.gameObject.tag == "Mortel")
         {
             print("meurt");
         }
-
+        if(collision.gameObject.tag == "button" && Input.GetKeyDown(KeyCode.Space))
+        {
+            animateur.SetBool("punch", true);
+        }
 
     }
 
