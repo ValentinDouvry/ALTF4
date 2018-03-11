@@ -702,7 +702,7 @@ GameObject:
   - component: {fileID: 135585998690132836}
   - component: {fileID: 114846123926806784}
   m_Layer: 0
-  m_Name: Grimace
+  m_Name: Grimace2.0
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -6,11 +6,12 @@ public class DeplacementAllie : MonoBehaviour
 {
     Rigidbody corps, corps2;
     public bool estMort = false;
-    Camera cam1, cam2, cam3;
+    public Camera cam1, cam2, cam3;
     bool actifS = false, boutons = false, action = false;
     Animator animator;
     bool actionB = false;
     GameObject hitboxGrimace;
+    public 
 
     Vector3 direction;
 
@@ -18,14 +19,12 @@ public class DeplacementAllie : MonoBehaviour
     {
         corps = GetComponent<Rigidbody>();
         animator = this.gameObject.GetComponent<Animator>();
-        corps2 = GameObject.Find("Jacob3.0").GetComponent<Rigidbody>();
+        corps2 = GameObject.Find("Jacob4.0").GetComponent<Rigidbody>();
     }
     // Use this for initialization
     void Start()
     {
-        cam1 = GameObject.Find("CameraGrimace").GetComponent<Camera>();
-        cam2 = GameObject.Find("CameraMort").GetComponent<Camera>();
-        cam3 = GameObject.Find("CameraJacob").GetComponent<Camera>();
+        
         cam1.enabled = false;
         cam2.enabled = false;
         cam3.enabled = true;

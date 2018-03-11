@@ -11,6 +11,9 @@ public class DeplacementJacob : MonoBehaviour
     public float speed = 5.0f;
 
     public Camera cam1, cam2, cam3;
+    public GameObject barreau1, barreau2, barreau3, barreau4;
+    public MeshRenderer rend1, rend2, rend3, rend4;
+    public CapsuleCollider caps1, caps2, caps3, caps4;
 
     public float RotationSpeed = 240.0f;
 
@@ -44,7 +47,7 @@ public class DeplacementJacob : MonoBehaviour
         animateur = GetComponent<Animator>();
 
 
-        corps2 = GameObject.Find("Grimace").GetComponent<Rigidbody>();
+        corps2 = GameObject.Find("Grimace2.0").GetComponent<Rigidbody>();
         
         
     }
@@ -56,11 +59,11 @@ public class DeplacementJacob : MonoBehaviour
         /*cam1.enabled = true;
         cam2.enabled = false;
         cam3.enabled = false;*/
-        cam1 = GameObject.Find("CameraJacob").GetComponent<Camera>();
-        cam2 = GameObject.Find("CameraMort").GetComponent<Camera>();
-        cam3 = GameObject.Find("CameraGrimace").GetComponent<Camera>();
+        //cam1 = GameObject.Find("CameraJacob").GetComponent<Camera>();
+        //cam2 = GameObject.Find("CameraMort").GetComponent<Camera>();
+        //cam3 = GameObject.Find("CameraGrimace").GetComponent<Camera>();
         cam1.enabled = true;
-        cam2.enabled = false;
+        //cam2.enabled = false;
         cam3.enabled = false;
         StartCoroutine(mort());
     }
@@ -78,7 +81,7 @@ public class DeplacementJacob : MonoBehaviour
         }
         if (!corps.isKinematic)
         {
-
+            //print("oui");
             var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
             var z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
             if (x != 0 || z != 0 && !corps.isKinematic)
@@ -144,18 +147,18 @@ public class DeplacementJacob : MonoBehaviour
 
     public void OnCollisionStay(Collision collision)
     {
-        if(collision.gameObject.tag == "Mortel")
-        {
-            //print("meurt");
-            estMort = true;
-            
-        }
+        
         if(collision.gameObject.tag == "button" && action)
         {
             animateur.SetBool("punch", true);
         }
+        if (collision.gameObject.tag == "Mortel")
+        {
+            print("meurt");
+            estMort = true;
 
-        
+        }
+
     }
 
 
@@ -173,6 +176,7 @@ public class DeplacementJacob : MonoBehaviour
             {
                 mort();
             }
+            
         }
     }
     public void OnCollisionExit(Collision collision)
@@ -185,6 +189,10 @@ public class DeplacementJacob : MonoBehaviour
             a.setEstValableP(false);
             actifP = false;
             
+        }
+        if (collision.gameObject.tag == "button")
+        {
+            animateur.SetBool("punch", false);
         }
     }
 
@@ -205,7 +213,7 @@ public class DeplacementJacob : MonoBehaviour
                 cam1.enabled = false;
                 cam2.enabled = true;
                 yield return new WaitForSeconds(2);
-                transform.position = new Vector3(0, 0, 0);
+                transform.position = new Vector3(20.209f, 0.837f, -2.73f);
                 corps.isKinematic = false;
                 cam1.enabled = true;
                 cam2.enabled = false;
@@ -218,6 +226,39 @@ public class DeplacementJacob : MonoBehaviour
     public bool getActifP()
     {
         return actifP;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        print("oui");
+        if(other.gameObject.tag == "debutNiveau")
+        {
+            barreau1 = GameObject.Find("Barreau1");
+            barreau2 = GameObject.Find("Barreau2");
+            barreau3 = GameObject.Find("Barreau3");
+            barreau4 = GameObject.Find("Barreau4");
+
+            rend1 = barreau1.GetComponent<MeshRenderer>();
+            rend2 = barreau2.GetComponent<MeshRenderer>();
+            rend3 = barreau3.GetComponent<MeshRenderer>();
+            rend4 = barreau4.GetComponent<MeshRenderer>();
+
+            rend1.enabled = false;
+            rend2.enabled = false;
+            rend3.enabled = false;
+            rend4.enabled = false;
+
+            caps1 = barreau1.GetComponent<CapsuleCollider>();
+            caps2 = barreau2.GetComponent<CapsuleCollider>();
+            caps3 = barreau3.GetComponent<CapsuleCollider>();
+            caps4 = barreau4.GetComponent<CapsuleCollider>();
+
+            caps1.enabled = false;
+            caps2.enabled = false;
+            caps3.enabled = false;
+            caps4.enabled = false;
+
+        }
     }
 
 }
