@@ -104,8 +104,6 @@ public class DeplacementJacob : MonoBehaviour
             }
             
         }
-
-        // On ne vérifie plus si la cam était activée ou non
         if (Input.GetKeyDown(KeyCode.Q))
         {
             changerCamera();
@@ -154,4 +152,3 @@ public class DeplacementJacob : MonoBehaviour
     }
 
 }
-

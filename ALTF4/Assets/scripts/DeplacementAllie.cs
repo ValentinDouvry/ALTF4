@@ -10,6 +10,7 @@ public class DeplacementAllie : MonoBehaviour
     bool actifP = true, actifS = false, boutons = false, action = false;
     Animator animator;
     bool actionB = false;
+    GameObject hitboxGrimace;
 
     Vector3 direction;
 
@@ -28,6 +29,7 @@ public class DeplacementAllie : MonoBehaviour
         cam3.enabled = false;
         animator = this.gameObject.GetComponent<Animator>();
         corps2 = GameObject.Find("Jacob").GetComponent<Rigidbody>();
+        hitboxGrimace = GameObject.Find("HitboxGrimace");
     }
 
     // Update is called once per frame
@@ -41,11 +43,6 @@ public class DeplacementAllie : MonoBehaviour
         else
         {
             actionB = false;
-        }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            // Pas normal que ca s'affiche en boucle
-            Debug.Log("TEST JO");
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -62,15 +59,18 @@ public class DeplacementAllie : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
             direction.x += 1f;
         */
-        if (Input.GetKey(KeyCode.Space))
-            direction.y += 1f;
-        if (Input.GetKey(KeyCode.LeftShift))
-            direction.y -= 1f;
-        var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
-        var z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
+        if (!corps.isKinematic)
+        {
+            if (Input.GetKey(KeyCode.Space))
+                direction.y += 1f;
+            if (Input.GetKey(KeyCode.LeftShift))
+                direction.y -= 1f;
+            var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
+            var z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
 
-        transform.Rotate(0, x, 0);
-        transform.Translate(0, 0, z);
+            transform.Rotate(0, x, 0);
+            transform.Translate(0, 0, z);
+        }
     }
 
     public void FixedUpdate()
@@ -93,6 +93,18 @@ public class DeplacementAllie : MonoBehaviour
 
     private void changerCamera()
     {
+        if (transform.parent)
+        {
+            transform.SetParent(null);
+        }
+        else
+        {
+            if (hitboxGrimace.GetComponent<HitboxGrimace>().getGrimace())
+            {
+                transform.SetParent(GameObject.Find("EmplacementGrimace").transform);
+                transform.localPosition = Vector3.zero;
+            }
+        }
         cam1.enabled = !cam1.enabled;
         corps.isKinematic = !corps.isKinematic;
         print(gameObject.name + " changerCamera()");
@@ -103,7 +115,7 @@ public class DeplacementAllie : MonoBehaviour
         if (collision.gameObject.tag == "Tuile")
         {
             GameObject tuileCourante = collision.gameObject;
-            var a = tuileCourante.GetComponent<EnigmeTuiles>();
+            var a = tuileCourante.GetComponent<EnigmeTuiles>(); 
             /*if (a.estValableP)
             {
                 a.setEstValableP(false);
