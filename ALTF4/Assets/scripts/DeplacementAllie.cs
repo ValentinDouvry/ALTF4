@@ -24,12 +24,13 @@ public class DeplacementAllie : MonoBehaviour
         cam1 = GameObject.Find("CameraGrimace").GetComponent<Camera>();
         cam2 = GameObject.Find("CameraMort").GetComponent<Camera>();
         cam3 = GameObject.Find("CameraJacob").GetComponent<Camera>();
-        cam1.enabled = true;
+        cam1.enabled = false;
         cam2.enabled = false;
-        cam3.enabled = false;
+        cam3.enabled = true;
         animator = this.gameObject.GetComponent<Animator>();
-        corps2 = GameObject.Find("Jacob").GetComponent<Rigidbody>();
+        corps2 = GameObject.Find("Jacob3.0").GetComponent<Rigidbody>();
         hitboxGrimace = GameObject.Find("HitboxGrimace");
+        corps.isKinematic = true;
     }
 
     // Update is called once per frame

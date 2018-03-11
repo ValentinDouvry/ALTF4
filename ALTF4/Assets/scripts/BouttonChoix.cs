@@ -6,27 +6,29 @@ using UnityEngine;
 public class BouttonChoix : MonoBehaviour {
 
 
-    GameObject chambreCrio, jacob;
+    GameObject chambreCrio, jacob, ascenseur;
     Animator animateur;
     Animator animateurJacob;
+    Animator animPorte;
+    Animator animPorteAscenseur;
     Collision collision;
-    GameObject porteDroite, porteGauche;
+    GameObject porte;
     Rigidbody rigidPorteDroite, rigidPorteGauche;
-    public bool action = true;
+    public bool action = false;
     
+
     // Use this for initialization
 
 
     void Awake () {
-        chambreCrio = GameObject.Find("anim_cryo_chamber");
+        chambreCrio = GameObject.Find("Lvl 1 anim_cryo_chamber");
         jacob = GameObject.Find("Jacob3.0");
-        porteDroite = GameObject.Find("lvl1_grosseporte_02");
-        porteGauche = GameObject.Find("lvl1_grosseporte_01");
-
+        porte = GameObject.Find("Lvl 1 grossePorte_open");
+        ascenseur = GameObject.Find("Lvl 1 ascenseur");
+        animPorte = porte.gameObject.GetComponent<Animator>();
         animateur = this.gameObject.GetComponent<Animator>();
         animateurJacob = jacob.gameObject.GetComponent<Animator>();
-        rigidPorteDroite = porteDroite.gameObject.GetComponent<Rigidbody>();
-        rigidPorteGauche = porteGauche.gameObject.GetComponent<Rigidbody>();
+        animPorteAscenseur = ascenseur.gameObject.GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -36,7 +38,7 @@ public class BouttonChoix : MonoBehaviour {
 
     public void Start()
     {
-        StartCoroutine(ouvrirPorte());
+        
     }
 
 
@@ -46,7 +48,7 @@ public class BouttonChoix : MonoBehaviour {
     {
         
         
-        if (this.gameObject.name == "button_press1" && collision.gameObject.tag == "Jacob" && Input.GetKey(KeyCode.E))
+        if (this.gameObject.name == "button_press (4)" && collision.gameObject.tag == "Jacob" && Input.GetKey(KeyCode.E))
         {
             animateurJacob.SetBool("punch", true);
             chambreCrio.GetComponent<Capsule>().setNumero(1);
@@ -55,7 +57,7 @@ public class BouttonChoix : MonoBehaviour {
 
             //print("1");
         }
-        else if (this.gameObject.name == "button_press2" && collision.gameObject.tag == "Jacob" && Input.GetKey(KeyCode.E))
+        else if (this.gameObject.name == "button_press (3)" && collision.gameObject.tag == "Jacob" && Input.GetKey(KeyCode.E))
         {
             animateurJacob.SetBool("punch", true);
             chambreCrio.GetComponent<Capsule>().setNumero(2);
@@ -63,7 +65,7 @@ public class BouttonChoix : MonoBehaviour {
             animateur.SetBool("appuye", true);
             //print("2");
         }
-        else if (this.gameObject.name == "button_press3" && collision.gameObject.tag == "Jacob" && Input.GetKey(KeyCode.E))
+        else if (this.gameObject.name == "button_press (2)" && collision.gameObject.tag == "Jacob" && Input.GetKey(KeyCode.E))
         {
             animateurJacob.SetBool("punch", true);
             
@@ -73,13 +75,27 @@ public class BouttonChoix : MonoBehaviour {
             //print("3");
         }
 
+        else if (this.gameObject.name == "button_press (1)" && collision.gameObject.tag == "Jacob" && Input.GetKey(KeyCode.E))
+        {
+            animateurJacob.SetBool("punch", true);
+            animPorteAscenseur.SetBool("ouverturePorte", true);
+            //animateurJacob.SetBool("punch", false);
+            //animateur.SetBool("appuye", true);
+            //action = true;
+
+            //("oui");
+            //print("3");
+        }
+        
+
         else if (this.gameObject.name == "button_press" && collision.gameObject.tag == "Jacob" && Input.GetKey(KeyCode.E))
         {
             animateurJacob.SetBool("punch", true);
+            animPorte.SetBool("ouverturePorte",true);
             //animateurJacob.SetBool("punch", false);
             //animateur.SetBool("appuye", true);
-            action = true;
-            ouvrirPorte();
+            //action = true;
+            
             //("oui");
             //print("3");
         }
@@ -88,19 +104,29 @@ public class BouttonChoix : MonoBehaviour {
 
     }
 
-    IEnumerator ouvrirPorte()
+    public void OnCollisionExit(Collision collision)
     {
-        while (true)
+        if(this.gameObject.name == "button_press (4)" && collision.gameObject.tag == "Jacob")
         {
-            if (action)
-            {
-                rigidPorteDroite.velocity = (new Vector3(0, 0, 200) * Time.deltaTime * 3);
-                yield return new WaitForSeconds(2);
-                rigidPorteDroite.velocity = Vector3.zero;
-                rigidPorteDroite.angularVelocity = Vector3.zero;
-                action = false;
-            }
-            yield return null;
+            animateurJacob.SetBool("punch", false);
+        }
+        else if (this.gameObject.name == "button_press (3)" && collision.gameObject.tag == "Jacob")
+        {
+            animateurJacob.SetBool("punch", false);
+        }
+        else if (this.gameObject.name == "button_press (2)" && collision.gameObject.tag == "Jacob")
+        {
+            animateurJacob.SetBool("punch", false);
+        }
+        else if(this.gameObject.name == "button_press (1)" && collision.gameObject.tag == "Jacob")
+        {
+            animateurJacob.SetBool("punch", false);
+        }
+        else if (this.gameObject.name == "button_press" && collision.gameObject.tag == "Jacob")
+        {
+            animateurJacob.SetBool("punch", false);
         }
     }
+
+
 }
