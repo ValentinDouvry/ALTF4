@@ -122,7 +122,7 @@ public class BouttonChoix : MonoBehaviour {
         {
             animateurJacob.SetBool("punch", false);
         }
-        else if (this.gameObject.name == "button_press" && collision.gameObject.tag == "Jacob")
+        else if (this.gameObject.name == "button_press " && collision.gameObject.tag == "Jacob")
         {
             animateurJacob.SetBool("punch", false);
         }

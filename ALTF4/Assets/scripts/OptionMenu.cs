@@ -9,7 +9,7 @@ public class OptionMenu : MonoBehaviour
 
     public void ButtonQuitter()
     {
-        Debug.Log("Le jeu va se fermer!");
+        //Debug.Log("Le jeu va se fermer!");
         Application.Quit();
     }
 

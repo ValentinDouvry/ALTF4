@@ -34,24 +34,35 @@ public class DeplacementJacob : MonoBehaviour
     public float forceSaut = 100;
     public bool aSaute;
     bool action = false;
+    public bool estMort = false;
+    bool actifP = false;
 
 
     private void Awake()
     {
         corps = GetComponent<Rigidbody>();
+        animateur = GetComponent<Animator>();
+
+
+        corps2 = GameObject.Find("Grimace").GetComponent<Rigidbody>();
+        
+        
     }
     // Use this for initialization
     void Start()
     {
         //corps.isKinematic = true;
+
+        /*cam1.enabled = true;
+        cam2.enabled = false;
+        cam3.enabled = false;*/
         cam1 = GameObject.Find("CameraJacob").GetComponent<Camera>();
         cam2 = GameObject.Find("CameraMort").GetComponent<Camera>();
         cam3 = GameObject.Find("CameraGrimace").GetComponent<Camera>();
-        animateur = GetComponent<Animator>();
-        
-        
-        corps2 = GameObject.Find("Grimace").GetComponent<Rigidbody>();
-        //StartCoroutine(sauter());
+        cam1.enabled = true;
+        cam2.enabled = false;
+        cam3.enabled = false;
+        StartCoroutine(mort());
     }
 
     // Update is called once per frame
@@ -70,7 +81,7 @@ public class DeplacementJacob : MonoBehaviour
 
             var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
             var z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
-            if (x != 0 || z != 0)
+            if (x != 0 || z != 0 && !corps.isKinematic)
             {
                 seDeplace = true;
             }
@@ -135,13 +146,46 @@ public class DeplacementJacob : MonoBehaviour
     {
         if(collision.gameObject.tag == "Mortel")
         {
-            print("meurt");
+            //print("meurt");
+            estMort = true;
+            
         }
         if(collision.gameObject.tag == "button" && action)
         {
             animateur.SetBool("punch", true);
         }
 
+        
+    }
+
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Tuile")
+        {
+            GameObject tuileCourante = collision.gameObject;
+            var a = tuileCourante.GetComponent<EnigmeTuiles>();
+            if (a.estValableP)
+            {
+                a.setTuileSuivante(a.name);
+            }
+            else
+            {
+                mort();
+            }
+        }
+    }
+    public void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Tuile")
+        {
+            GameObject tuileCourante = collision.gameObject;
+            var a = tuileCourante.GetComponent<EnigmeTuiles>();
+           
+            a.setEstValableP(false);
+            actifP = false;
+            
+        }
     }
 
     private void changerCamera()
@@ -149,6 +193,31 @@ public class DeplacementJacob : MonoBehaviour
         cam1.enabled = !cam1.enabled;
         corps.isKinematic = !corps.isKinematic;
         print(gameObject.name + " changerCamera()");
+    }
+
+    public IEnumerator mort()
+    {
+        while (true)
+        {
+            if (estMort)
+            {
+                corps.isKinematic = true;
+                cam1.enabled = false;
+                cam2.enabled = true;
+                yield return new WaitForSeconds(2);
+                transform.position = new Vector3(0, 0, 0);
+                corps.isKinematic = false;
+                cam1.enabled = true;
+                cam2.enabled = false;
+                estMort = false;
+            }
+            yield return null;
+        }
+    }
+
+    public bool getActifP()
+    {
+        return actifP;
     }
 
 }

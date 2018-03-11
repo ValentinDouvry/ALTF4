@@ -9,6 +9,7 @@ TagManager:
   - Action
   - Tuile
   - Jacob
+  - Aeration
   layers:
   - Default
   - TransparentFX

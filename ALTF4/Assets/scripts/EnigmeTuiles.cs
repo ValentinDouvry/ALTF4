@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnigmeTuiles : MonoBehaviour {
 
-    public bool estValableS = false, estValableP = false, actifS = false, actifP = true;
+    public bool estValableS = false, estValableP = false, actifS = false, actifP = false;
     Rigidbody corps;
 
     private void Awake()
@@ -48,6 +48,36 @@ public class EnigmeTuiles : MonoBehaviour {
             var a = tuile.GetComponent<EnigmeTuiles>();
             a.setEstValableS(true);
         }
+        if (tuileCourante == "ParcoursP1")
+        {
+            GameObject tuile = GameObject.Find("ParcoursP2");
+            var a = tuile.GetComponent<EnigmeTuiles>();
+            a.setEstValableP(true);
+        }
+        if (tuileCourante == "ParcoursP2")
+        {
+            GameObject tuile = GameObject.Find("ParcoursP3");
+            var a = tuile.GetComponent<EnigmeTuiles>();
+            a.setEstValableP(true);
+        }
+        if (tuileCourante == "ParcoursP3")
+        {
+            GameObject tuile = GameObject.Find("ParcoursP4");
+            var a = tuile.GetComponent<EnigmeTuiles>();
+            a.setEstValableP(true);
+        }
+        if (tuileCourante == "ParcoursP4")
+        {
+            GameObject tuile = GameObject.Find("ParcoursP5");
+            var a = tuile.GetComponent<EnigmeTuiles>();
+            a.setEstValableP(true);
+        }
+        if (tuileCourante == "ParcoursP5")
+        {
+            GameObject tuile = GameObject.Find("ParcoursP6");
+            var a = tuile.GetComponent<EnigmeTuiles>();
+            a.setEstValableP(true);
+        }
     }
 
     // Update is called once per frame
@@ -88,7 +118,7 @@ public class EnigmeTuiles : MonoBehaviour {
         return estValableP;
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -102,10 +132,53 @@ public class EnigmeTuiles : MonoBehaviour {
             }
             else
             {
+
                 collision.gameObject.GetComponent<DeplacementAllie>().mort();
             }
 
         }
+        if (collision.gameObject.tag == "Jacob")
+        {
+            
+            if (estValableP)
+            {
+                actifP = true;
+                if (actifP && actifS)
+                {
+                    setTuileSuivante(name);
+                }
+            }
+            else
+            {
+
+                collision.gameObject.GetComponent<DeplacementJacob>().mort();
+            }
+        }
+
+    }
+
+    public void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if (actifS)
+            {
+                actifS = false;
+                
+            }            
+
+        }
+        if (collision.gameObject.tag == "Jacob")
+        {
+
+            if (actifP)
+            {
+                actifP = false;
+               
+            }
+            
+        }
 
     }
 }
+
