@@ -124,8 +124,9 @@ GameObject:
   - component: {fileID: 8623236}
   - component: {fileID: 8623235}
   - component: {fileID: 8623234}
+  - component: {fileID: 8623237}
   m_Layer: 0
-  m_Name: b1
+  m_Name: BoutonPlateforme1
   m_TagString: Action
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,6 +198,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 8623232}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &8623237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 8623232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb8cb12464f8ad640877bf4e4fbcc1f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &38445502
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,7 +936,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d7691d57c9b014fa5b4caee42aa5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 0, y: 0, z: 0}
   estMort: 0
 --- !u!23 &423939851
 MeshRenderer:
@@ -1738,7 +1749,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d7691d57c9b014fa5b4caee42aa5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 0, y: 0, z: 0}
   estMort: 0
 --- !u!4 &623650097 stripped
 Transform:
@@ -1983,8 +1993,9 @@ GameObject:
   - component: {fileID: 830615810}
   - component: {fileID: 830615809}
   - component: {fileID: 830615808}
+  - component: {fileID: 830615811}
   m_Layer: 0
-  m_Name: b3
+  m_Name: BoutonPlateforme3
   m_TagString: Action
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2056,6 +2067,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 830615806}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &830615811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 830615806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 447c55cb1501bb244a8850f88cef1914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &838049693
 GameObject:
   m_ObjectHideFlags: 0
@@ -2876,9 +2898,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1096189543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7a13e4edb31b84489c748cc456b62f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d7e734ea2c038e419335fcdf0c41df4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bouton: 0
 --- !u!1 &1101856949
 GameObject:
   m_ObjectHideFlags: 0
@@ -4241,8 +4264,9 @@ GameObject:
   - component: {fileID: 1502901254}
   - component: {fileID: 1502901253}
   - component: {fileID: 1502901252}
+  - component: {fileID: 1502901255}
   m_Layer: 0
-  m_Name: b2
+  m_Name: BoutonPlateforme2
   m_TagString: Action
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4314,6 +4338,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1502901250}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1502901255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1502901250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f659d2b16bbea4045b35349807abdebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1591727976
 GameObject:
   m_ObjectHideFlags: 0
@@ -4651,9 +4686,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1643338611}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7a13e4edb31b84489c748cc456b62f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 989daf885cea5904698b8d45f9a7feca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bouton: 0
 --- !u!1 &1681192533
 GameObject:
   m_ObjectHideFlags: 0
@@ -5447,9 +5483,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2110317657}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7a13e4edb31b84489c748cc456b62f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a6e71329fb2fec49a3e331e9579b6a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bouton: 0
 --- !u!1 &2136205921
 GameObject:
   m_ObjectHideFlags: 0

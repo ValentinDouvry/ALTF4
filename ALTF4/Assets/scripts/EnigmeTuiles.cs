@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnigmeTuiles : MonoBehaviour {
 
-    public bool estValableS = false, estValableP = false;
+    public bool estValableS = false, estValableP = false, actifS = false, actifP = true;
     Rigidbody corps;
 
     private void Awake()
@@ -15,9 +15,43 @@ public class EnigmeTuiles : MonoBehaviour {
     void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    public void setTuileSuivante(string tuileCourante)
+    {
+        if (tuileCourante == "ParcoursS1")
+        {
+            GameObject tuile = GameObject.Find("ParcoursS2");
+            var a = tuile.GetComponent<EnigmeTuiles>();
+            a.setEstValableS(true);
+        }
+        if (tuileCourante == "ParcoursS2")
+        {
+            GameObject tuile = GameObject.Find("ParcoursS3");
+            var a = tuile.GetComponent<EnigmeTuiles>();
+            a.setEstValableS(true);
+        }
+        if (tuileCourante == "ParcoursS3")
+        {
+            GameObject tuile = GameObject.Find("ParcoursS4");
+            var a = tuile.GetComponent<EnigmeTuiles>();
+            a.setEstValableS(true);
+        }
+        if (tuileCourante == "ParcoursS4")
+        {
+            GameObject tuile = GameObject.Find("ParcoursS5");
+            var a = tuile.GetComponent<EnigmeTuiles>();
+            a.setEstValableS(true);
+        }
+        if (tuileCourante == "ParcoursS5")
+        {
+            GameObject tuile = GameObject.Find("ParcoursS6");
+            var a = tuile.GetComponent<EnigmeTuiles>();
+            a.setEstValableS(true);
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (estValableS)
         {
             GetComponent<Renderer>().material.color = Color.yellow;
@@ -52,5 +86,26 @@ public class EnigmeTuiles : MonoBehaviour {
     public bool getEstValableP()
     {
         return estValableP;
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if (estValableS)
+            {
+                actifS = true;
+                if (actifP && actifS)
+                {
+                    setTuileSuivante(name);
+                }
+            }
+            else
+            {
+                collision.gameObject.GetComponent<DeplacementAllie>().mort();
+            }
+
+        }
+
     }
 }
