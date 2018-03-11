@@ -52,7 +52,7 @@ public class DeplacementAllie : MonoBehaviour
         {
             changerCamera();
         }
-
+        /*
         if (Input.GetKey(KeyCode.UpArrow))
             direction.z += 1f;
         if (Input.GetKey(KeyCode.DownArrow))
@@ -61,10 +61,16 @@ public class DeplacementAllie : MonoBehaviour
             direction.x -= 1f;
         if (Input.GetKey(KeyCode.RightArrow))
             direction.x += 1f;
+        */
         if (Input.GetKey(KeyCode.Space))
             direction.y += 1f;
         if (Input.GetKey(KeyCode.LeftShift))
             direction.y -= 1f;
+        var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
+        var z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
+
+        transform.Rotate(0, x, 0);
+        transform.Translate(0, 0, z);
     }
 
     public void FixedUpdate()
