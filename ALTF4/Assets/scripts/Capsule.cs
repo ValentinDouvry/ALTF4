@@ -36,17 +36,17 @@ public class Capsule : MonoBehaviour {
                     animateur.SetInteger("NumButton", numero);
                     print("1");
                 }
-                else if (numero == 2 && premiereOuverture)
+                /*else if (numero == 2 && premiereOuverture)
                 {
                     animateur.SetInteger("NumButton", numero);
                     print("2");
                 }
-                else if (numero == 3 && premiereOuverture)
+               /else if (numero == 3 && premiereOuverture)
                 {
                     animateur.SetInteger("NumButton", numero);
                     print("3");
                 }
-                premiereOuverture = false;
+                premiereOuverture = false;*/
                 yield return new WaitForSeconds(3f);
                 animateur.SetInteger("NumButton", 0);
                 ouvrir = false;

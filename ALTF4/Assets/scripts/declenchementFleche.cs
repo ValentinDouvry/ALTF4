@@ -43,14 +43,14 @@ public class declenchementFleche : MonoBehaviour {
 		
 	}
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Grimace")
+        if(other.gameObject.name == "Grimace2.0")
         {
             for (int i = 0; i < fleches.Length; i++)
             {
                 var a = fleches[i].GetComponent<PackFleches1>();
-               // a.envoyerFleche(true);
+               a.envoyerFleche();
             }
 
         }

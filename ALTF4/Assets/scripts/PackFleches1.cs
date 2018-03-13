@@ -13,6 +13,7 @@ public class PackFleches1 : MonoBehaviour {
         body = this.gameObject.GetComponent<Rigidbody>();
         position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
     }
+    
 	
 	// Update is called once per frame
 	void Update () {
@@ -20,15 +21,16 @@ public class PackFleches1 : MonoBehaviour {
     }
     private void Start()
     {
-
+        StartCoroutine(envoyerFleche());
     }
 
     public IEnumerator envoyerFleche()
     {
         print("test");
-        body.AddForce(new Vector3(0, 100, 0) * Time.deltaTime);
+        body.AddForce(transform.forward * 400);
         yield return new WaitForSeconds(2);
-        body.transform.position = position;
+        this.transform.position = position;
+        this.transform.Rotate(new Vector3(0, 0, 0));
 
     }      
 }

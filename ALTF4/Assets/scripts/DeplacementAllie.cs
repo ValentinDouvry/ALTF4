@@ -6,11 +6,11 @@ public class DeplacementAllie : MonoBehaviour
 {
     Rigidbody corps, corps2;
     public bool estMort = false;
-    public Camera cam1, cam2, cam3;
+    public Camera cam1, cam2, cam3,cam4;
     bool actifS = false, boutons = false, action = false;
     Animator animator;
     bool actionB = false;
-    GameObject hitboxGrimace;
+   public  GameObject hitboxGrimace;
     public 
 
     Vector3 direction;
@@ -28,25 +28,19 @@ public class DeplacementAllie : MonoBehaviour
         cam1.enabled = false;
         cam2.enabled = false;
         cam3.enabled = true;
+        cam4.enabled = false;
         
         
-        hitboxGrimace = GameObject.Find("HitboxGrimace");
-        corps.isKinematic = true;
+        //hitboxGrimace = GameObject.Find("HitboxGrimace");
+        //corps.isKinematic = true;
         StartCoroutine(mort());
     }
 
     // Update is called once per frame
     void Update()
     {
-        direction = Vector3.zero;
-        if (Input.GetKey(KeyCode.E))
-        {
-            actionB = true;
-        }
-        else
-        {
-            actionB = false;
-        }
+        
+        
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -62,8 +56,20 @@ public class DeplacementAllie : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
             direction.x += 1f;
         */
-        if (!corps.isKinematic)
+        if (cam1.enabled)
         {
+
+            direction = Vector3.zero;
+
+            if (Input.GetKey(KeyCode.E))
+            {
+                actionB = true;
+            }
+            else
+            {
+                actionB = false;
+            }
+
             if (Input.GetKey(KeyCode.Space))
                 direction.y += 1f;
             if (Input.GetKey(KeyCode.LeftShift))
@@ -99,7 +105,7 @@ public class DeplacementAllie : MonoBehaviour
             if (a.estValableS)
             {
 
-                a.setTuileSuivante(a.name);
+                a.setTuileSuivante();
                 
             }
             else
@@ -188,6 +194,7 @@ public class DeplacementAllie : MonoBehaviour
         }
         else
         {
+            print(hitboxGrimace.GetComponent<HitboxGrimace>().getGrimace());
             if (hitboxGrimace.GetComponent<HitboxGrimace>().getGrimace())
             {
                 transform.SetParent(GameObject.Find("EmplacementGrimace").transform);
@@ -195,7 +202,7 @@ public class DeplacementAllie : MonoBehaviour
             }
         }
         cam1.enabled = !cam1.enabled;
-        corps.isKinematic = !corps.isKinematic;
+        //corps.isKinematic = !corps.isKinematic;
         print(gameObject.name + " changerCamera()");
     }
 
@@ -207,14 +214,16 @@ public class DeplacementAllie : MonoBehaviour
         {
             if (estMort)
             {
-                corps.isKinematic = true;
+                //corps.isKinematic = true;
                 cam1.enabled = false;
                 cam2.enabled = true;
                 yield return new WaitForSeconds(2);
-                //transform.position = new Vector3(0, 0, 0);
-                corps.isKinematic = false;
+                corps2.transform.position = new Vector3(20.209f, 0.837f, -2.73f);
+                corps2.transform.Rotate(new Vector3(0, 180, 0));
+                this.transform.position = new Vector3(-1.656f, 0.589f, -0.55f);
                 cam1.enabled = true;
                 cam2.enabled = false;
+
                 estMort = false;
             }
             yield return null;

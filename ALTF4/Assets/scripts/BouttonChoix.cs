@@ -6,7 +6,7 @@ using UnityEngine;
 public class BouttonChoix : MonoBehaviour {
 
 
-    GameObject chambreCrio, jacob, ascenseur, grimace, pont, pont2;
+    GameObject chambreCrio, jacob, ascenseur, grimace, pont, pont2, ascenseurBlock;
     Animator animateur;
     Animator animateurJacob;
     Animator animPorte;
@@ -15,6 +15,7 @@ public class BouttonChoix : MonoBehaviour {
     Animator animPont;
     Animator animPont2;
     Collision collision;
+    BoxCollider blockAscenseur;
     GameObject porte;
     Rigidbody rigidPorteDroite, rigidPorteGauche;
     public bool action = false;
@@ -31,6 +32,8 @@ public class BouttonChoix : MonoBehaviour {
         porte = GameObject.Find("Lvl 1 grossePorte_open");
         ascenseur = GameObject.Find("Lvl 1 ascenseur");
         grimace = GameObject.Find("Grimace2.0");
+        ascenseurBlock = GameObject.Find("ascenseurBlock");
+        blockAscenseur = ascenseurBlock.GetComponent<BoxCollider>();
         animPont2 = pont2.gameObject.GetComponent<Animator>();
         animPont = pont.gameObject.GetComponent<Animator>();
         animPorte = porte.gameObject.GetComponent<Animator>();
@@ -88,6 +91,8 @@ public class BouttonChoix : MonoBehaviour {
         {
             animateurJacob.SetBool("punch", true);
             animPorteAscenseur.SetBool("ouverturePorte", true);
+            blockAscenseur.enabled = false;
+
             //animateurJacob.SetBool("punch", false);
             //animateur.SetBool("appuye", true);
             //action = true;

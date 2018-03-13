@@ -2,77 +2,86 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnigmeTuiles : MonoBehaviour {
+public class EnigmeTuiles : MonoBehaviour
+{
 
-    public bool estValableS = false, estValableP = false, actifS = false, actifP = false;
+    public bool estValableS = false, estValableP = false;
+    public static EnigmeTuiles actifS, actifP;
+    public bool lockActive = false;
     Rigidbody corps;
+    private bool resetNextFrame = false;
+    public MeshRenderer mesh;
+
 
     private void Awake()
     {
         corps = GetComponent<Rigidbody>();
+        mesh = GetComponent<MeshRenderer>();
     }
     // Use this for initialization
-    void Start () {
-		
-	}
-
-    public void setTuileSuivante(string tuileCourante)
+    void Start()
     {
-        if (tuileCourante == "ParcoursS1")
+
+    }
+
+    public void setTuileSuivante()
+    {
+        resetNextFrame = true;
+        if (name == "ParcoursS1")
         {
             GameObject tuile = GameObject.Find("ParcoursS2");
             var a = tuile.GetComponent<EnigmeTuiles>();
             a.setEstValableS(true);
         }
-        if (tuileCourante == "ParcoursS2")
+        if (name == "ParcoursS2")
         {
             GameObject tuile = GameObject.Find("ParcoursS3");
             var a = tuile.GetComponent<EnigmeTuiles>();
             a.setEstValableS(true);
         }
-        if (tuileCourante == "ParcoursS3")
+        if (name == "ParcoursS3")
         {
             GameObject tuile = GameObject.Find("ParcoursS4");
             var a = tuile.GetComponent<EnigmeTuiles>();
             a.setEstValableS(true);
         }
-        if (tuileCourante == "ParcoursS4")
+        if (name == "ParcoursS4")
         {
             GameObject tuile = GameObject.Find("ParcoursS5");
             var a = tuile.GetComponent<EnigmeTuiles>();
             a.setEstValableS(true);
         }
-        if (tuileCourante == "ParcoursS5")
+        if (name == "ParcoursS5")
         {
             GameObject tuile = GameObject.Find("ParcoursS6");
             var a = tuile.GetComponent<EnigmeTuiles>();
             a.setEstValableS(true);
         }
-        if (tuileCourante == "ParcoursP1")
+        if (name == "ParcoursP1")
         {
             GameObject tuile = GameObject.Find("ParcoursP2");
             var a = tuile.GetComponent<EnigmeTuiles>();
             a.setEstValableP(true);
         }
-        if (tuileCourante == "ParcoursP2")
+        if (name == "ParcoursP2")
         {
             GameObject tuile = GameObject.Find("ParcoursP3");
             var a = tuile.GetComponent<EnigmeTuiles>();
             a.setEstValableP(true);
         }
-        if (tuileCourante == "ParcoursP3")
+        if (name == "ParcoursP3")
         {
             GameObject tuile = GameObject.Find("ParcoursP4");
             var a = tuile.GetComponent<EnigmeTuiles>();
             a.setEstValableP(true);
         }
-        if (tuileCourante == "ParcoursP4")
+        if (name == "ParcoursP4")
         {
             GameObject tuile = GameObject.Find("ParcoursP5");
             var a = tuile.GetComponent<EnigmeTuiles>();
             a.setEstValableP(true);
         }
-        if (tuileCourante == "ParcoursP5")
+        if (name == "ParcoursP5")
         {
             GameObject tuile = GameObject.Find("ParcoursP6");
             var a = tuile.GetComponent<EnigmeTuiles>();
@@ -81,22 +90,40 @@ public class EnigmeTuiles : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
+        if (resetNextFrame)
+        {
+            actifP = null;
+            actifS = null;
+            resetNextFrame = false;
+        }
         if (estValableS)
         {
+            /*
+            texture = GetComponent
+            mesh.material.mainTexture = 
+            */
             GetComponent<Renderer>().material.color = Color.yellow;
-        } else
+        }
+        else
         {
             if (estValableP)
             {
                 GetComponent<Renderer>().material.color = Color.green;
-            } else
+            }
+            else if (lockActive)
+            {
+                GetComponent<Renderer>().material.color = Color.cyan;
+            }
+            else
             {
                 GetComponent<Renderer>().material.color = Color.white;
+
             }
         }
 
-	}
+    }
 
     public void setEstValableS(bool valeur)
     {
@@ -120,38 +147,45 @@ public class EnigmeTuiles : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (lockActive)
+        {
+            return;
+        }
+        if (collision.gameObject.name == "Grimace2.0")
         {
             if (estValableS)
             {
-                actifS = true;
+                actifS = this;
                 if (actifP && actifS)
                 {
-                    setTuileSuivante(name);
+                    lockActive = true;
+                    actifS.setTuileSuivante();
+                    actifP.setTuileSuivante();
                 }
             }
             else
             {
-
-                collision.gameObject.GetComponent<DeplacementAllie>().mort();
+                collision.gameObject.GetComponent<DeplacementAllie>().estMort = true;
             }
 
         }
-        if (collision.gameObject.tag == "Jacob")
+        if (collision.gameObject.tag == "Jacob4.0")
         {
-            
+
             if (estValableP)
             {
-                actifP = true;
+                actifP = this;
                 if (actifP && actifS)
                 {
-                    setTuileSuivante(name);
+                    lockActive = true;
+                    actifS.setTuileSuivante();
+                    actifP.setTuileSuivante();
                 }
             }
             else
             {
 
-                collision.gameObject.GetComponent<DeplacementJacob>().mort();
+                collision.gameObject.GetComponent<DeplacementJacob>().estMort = true;
             }
         }
 
@@ -159,13 +193,17 @@ public class EnigmeTuiles : MonoBehaviour {
 
     public void OnCollisionExit(Collision collision)
     {
+        if (lockActive)
+        {
+            return;
+        }
         if (collision.gameObject.tag == "Player")
         {
             if (actifS)
             {
-                actifS = false;
-                
-            }            
+                actifS = null;
+
+            }
 
         }
         if (collision.gameObject.tag == "Jacob")
@@ -173,10 +211,10 @@ public class EnigmeTuiles : MonoBehaviour {
 
             if (actifP)
             {
-                actifP = false;
-               
+                actifP = null;
+
             }
-            
+
         }
 
     }

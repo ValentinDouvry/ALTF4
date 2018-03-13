@@ -11,6 +11,8 @@ TagManager:
   - Jacob
   - Aeration
   - debutNiveau
+  - button
+  - ascenseur
   layers:
   - Default
   - TransparentFX

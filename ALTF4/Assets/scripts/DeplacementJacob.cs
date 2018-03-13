@@ -5,12 +5,14 @@ using UnityEngine;
 public class DeplacementJacob : MonoBehaviour
 {
     private Animator _animator;
+    public GameObject grimace;
+
 
     private CharacterController _characterController;
 
     public float speed = 5.0f;
 
-    public Camera cam1, cam2, cam3;
+    public Camera cam1, cam2, cam3,cam4;
     public GameObject barreau1, barreau2, barreau3, barreau4;
     public MeshRenderer rend1, rend2, rend3, rend4;
     public CapsuleCollider caps1, caps2, caps3, caps4;
@@ -18,11 +20,14 @@ public class DeplacementJacob : MonoBehaviour
     public float RotationSpeed = 240.0f;
 
     private float Gravity = 20.0f;
+    public AudioClip music;
+    private AudioSource source;
 
     private Vector3 _moveDir = Vector3.zero;
     /*References*/
     Animator animateur;
     Rigidbody corps, corps2;
+
     /*-----------------*/
 
     /*Check Ground*/
@@ -45,6 +50,7 @@ public class DeplacementJacob : MonoBehaviour
     {
         corps = GetComponent<Rigidbody>();
         animateur = GetComponent<Animator>();
+        source = this.GetComponent<AudioSource>();
 
 
         corps2 = GameObject.Find("Grimace2.0").GetComponent<Rigidbody>();
@@ -63,14 +69,21 @@ public class DeplacementJacob : MonoBehaviour
         //cam2 = GameObject.Find("CameraMort").GetComponent<Camera>();
         //cam3 = GameObject.Find("CameraGrimace").GetComponent<Camera>();
         cam1.enabled = true;
-        //cam2.enabled = false;
+        cam2.enabled = false;
         cam3.enabled = false;
+        cam4.enabled = false;
         StartCoroutine(mort());
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (source != null && !source.isPlaying)
+        {
+            source.PlayOneShot(music);
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) && grounded)
         {
             action = true;
@@ -79,12 +92,12 @@ public class DeplacementJacob : MonoBehaviour
         {
             action = false;
         }
-        if (!corps.isKinematic)
+        if (cam1.enabled)
         {
             //print("oui");
             var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
             var z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
-            if (x != 0 || z != 0 && !corps.isKinematic)
+            if (x != 0 || z != 0)
             {
                 seDeplace = true;
             }
@@ -154,7 +167,7 @@ public class DeplacementJacob : MonoBehaviour
         }
         if (collision.gameObject.tag == "Mortel")
         {
-            print("meurt");
+            //print("meurt");
             estMort = true;
 
         }
@@ -168,16 +181,29 @@ public class DeplacementJacob : MonoBehaviour
         {
             GameObject tuileCourante = collision.gameObject;
             var a = tuileCourante.GetComponent<EnigmeTuiles>();
-            if (a.estValableP)
+            if (!a.estValableP)
             {
-                a.setTuileSuivante(a.name);
-            }
-            else
-            {
-                mort();
+                estMort = true;
             }
             
+            
         }
+
+        if(collision.gameObject.tag == "ascenseur")
+        {
+            this.transform.position = new Vector3(-14.26f, 2.375f, -12.46f);
+            transform.Rotate(new Vector3(0, 180, 0));
+            grimace.transform.position = new Vector3(-13.96f,4.71f,-12.68f);
+            transform.Rotate(new Vector3(0, 90, 0));
+        }
+        if (collision.gameObject.tag == "Finish")
+        {
+            cam1.enabled = false;
+            cam2.enabled = false;
+            cam3.enabled = false;
+            cam4.enabled = true;
+        }
+
     }
     public void OnCollisionExit(Collision collision)
     {
@@ -199,7 +225,7 @@ public class DeplacementJacob : MonoBehaviour
     private void changerCamera()
     {
         cam1.enabled = !cam1.enabled;
-        corps.isKinematic = !corps.isKinematic;
+        //corps.isKinematic = !corps.isKinematic;
         print(gameObject.name + " changerCamera()");
     }
 
@@ -209,12 +235,15 @@ public class DeplacementJacob : MonoBehaviour
         {
             if (estMort)
             {
-                corps.isKinematic = true;
+
+                //corps.isKinematic = true;
                 cam1.enabled = false;
                 cam2.enabled = true;
                 yield return new WaitForSeconds(2);
                 transform.position = new Vector3(20.209f, 0.837f, -2.73f);
-                corps.isKinematic = false;
+                transform.Rotate(new Vector3(0, -90, 0));
+                grimace.transform.position = new Vector3(-1.656f, 0.589f, -0.55f);
+                //corps.isKinematic = false;
                 cam1.enabled = true;
                 cam2.enabled = false;
                 estMort = false;
@@ -230,7 +259,7 @@ public class DeplacementJacob : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("oui");
+        //print("oui");
         if(other.gameObject.tag == "debutNiveau")
         {
             barreau1 = GameObject.Find("Barreau1");
