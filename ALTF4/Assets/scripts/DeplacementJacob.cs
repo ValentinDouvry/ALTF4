@@ -265,11 +265,7 @@ public class DeplacementJacob : MonoBehaviour
         //print("oui");
         if(other.gameObject.tag == "debutNiveau")
         {
-            barreau1 = GameObject.Find("Barreau1");
-            barreau2 = GameObject.Find("Barreau2");
-            barreau3 = GameObject.Find("Barreau3");
-            barreau4 = GameObject.Find("Barreau4");
-
+            
             rend1 = barreau1.GetComponent<MeshRenderer>();
             rend2 = barreau2.GetComponent<MeshRenderer>();
             rend3 = barreau3.GetComponent<MeshRenderer>();
