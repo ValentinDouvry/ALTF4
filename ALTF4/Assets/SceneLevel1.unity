@@ -10264,7 +10264,7 @@ MeshCollider:
   m_GameObject: {fileID: 512422444}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -19213,7 +19213,7 @@ GameObject:
   - component: {fileID: 883915749}
   m_Layer: 0
   m_Name: finLevel2
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19259,7 +19259,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 883915748}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -23815,12 +23815,36 @@ MeshCollider:
   m_GameObject: {fileID: 1088935913}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300014, guid: a818a19f039511947b85b4a37a2f07af, type: 3}
+--- !u!65 &1088935918
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1088935913}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.3814905, y: 3.6276171, z: 0.4519456}
+  m_Center: {x: -4.823882, y: 2.2139224e-25, z: 0.2259728}
+--- !u!65 &1088935919
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1088935913}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.5559106, y: 3.6276171, z: 0.4519456}
+  m_Center: {x: 2.7366705, y: -2.4904e-25, z: 0.2259728}
 --- !u!1 &1091331808
 GameObject:
   m_ObjectHideFlags: 0
@@ -29109,6 +29133,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.6278853, y: 0.21924305, z: 1.889271}
   m_Center: {x: 0.8139428, y: -0.0040979385, z: 0.08811188}
+--- !u!65 &1309575771
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1309575764}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.7839708, y: 0.5287628, z: 2.0061898}
+  m_Center: {x: 0.774999, y: 2.378687, z: 0.13907516}
 --- !u!1 &1310135629 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100138, guid: 3075f1990d1d41249b4fd90c73cf5cbe, type: 3}
@@ -33710,6 +33746,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5037783, y: 2.8552957, z: 1.9784772}
   m_Center: {x: -0.17186579, y: 1.0420153, z: 0.019061327}
+--- !u!65 &1498335735
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1498335728}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6984482, y: 0.37452126, z: 1.9412181}
+  m_Center: {x: 0.8492242, y: 2.4216914, z: 0.06876111}
 --- !u!4 &1499246905 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: aeb70a01f18ce8e42a1f9a4241fcd742, type: 3}
@@ -38977,7 +39025,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1396165017194736, guid: bb5f2bd869facb44487130675d9b860f, type: 2}
       propertyPath: m_Name
-      value: Lvl 2 Presure Plates (1)
+      value: Lvl 2 Presure Plates
       objectReference: {fileID: 0}
     - target: {fileID: 114854255295805070, guid: bb5f2bd869facb44487130675d9b860f,
         type: 2}

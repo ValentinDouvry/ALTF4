@@ -6,6 +6,7 @@ public class DeplacementJacob : MonoBehaviour
 {
     private Animator _animator;
     public GameObject grimace;
+    public bool finLevel1 = false;
 
 
     private CharacterController _characterController;
@@ -194,7 +195,8 @@ public class DeplacementJacob : MonoBehaviour
             this.transform.position = new Vector3(-14.26f, 2.375f, -12.46f);
             transform.Rotate(new Vector3(0, 90, 0));
             grimace.transform.position = new Vector3(-13.96f,4.71f,-12.68f);
-            transform.Rotate(new Vector3(0, 90, 0));
+            corps2.transform.Rotate(new Vector3(0, 90, 0));
+            finLevel1 = true;
         }
         if (collision.gameObject.tag == "Finish")
         {
@@ -243,9 +245,20 @@ public class DeplacementJacob : MonoBehaviour
                 cam1.enabled = false;
                 cam2.enabled = true;
                 yield return new WaitForSeconds(2);
-                transform.position = new Vector3(20.209f, 0.837f, -2.73f);
-                transform.Rotate(new Vector3(0, -90, 0));
-                grimace.transform.position = new Vector3(-1.656f, 0.589f, -0.55f);
+                if(finLevel1)
+                {
+                    this.transform.position = new Vector3(-14.26f, 2.375f, -12.46f);
+                    transform.Rotate(new Vector3(0, 180, 0));
+                    grimace.transform.position = new Vector3(-13.96f, 4.71f, -12.68f);
+                    corps2.transform.Rotate(new Vector3(0, 90, 0));
+                }
+                else
+                {
+                    transform.position = new Vector3(20.209f, 0.837f, -2.73f);
+                    transform.Rotate(new Vector3(0, -90, 0));
+                    grimace.transform.position = new Vector3(-1.656f, 0.589f, -0.55f);
+                }
+                
                 //corps.isKinematic = false;
                 cam1.enabled = true;
                 cam2.enabled = false;
