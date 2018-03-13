@@ -6,7 +6,7 @@ using UnityEngine;
 public class BouttonChoix : MonoBehaviour {
 
 
-    GameObject chambreCrio, jacob, ascenseur, grimace, pont, pont2, ascenseurBlock;
+    GameObject chambreCrio, jacob, ascenseur, grimace, pont, pont2, ascenseurBlock, crio1;
     Animator animateur;
     Animator animateurJacob;
     Animator animPorte;
@@ -21,6 +21,7 @@ public class BouttonChoix : MonoBehaviour {
     public GameObject barreau1, barreau2, barreau3, barreau4, barreau5, barreau6, barreau7, barreau8, barreau9, barreau10, barreau11, barreau12, barreau13, barreau14, barreau15, barreau16, barreau17, barreau18, barreau19, barreau20, barreau21, barreau22;
     public bool action = false;
     
+    
 
     // Use this for initialization
 
@@ -34,6 +35,7 @@ public class BouttonChoix : MonoBehaviour {
         ascenseur = GameObject.Find("Lvl 1 ascenseur");
         grimace = GameObject.Find("Grimace2.0");
         ascenseurBlock = GameObject.Find("ascenseurBlock");
+        crio1 = GameObject.Find("collider_capsule_01");
         blockAscenseur = ascenseurBlock.GetComponent<BoxCollider>();
         animPont2 = pont2.gameObject.GetComponent<Animator>();
         animPont = pont.gameObject.GetComponent<Animator>();
@@ -67,6 +69,7 @@ public class BouttonChoix : MonoBehaviour {
             chambreCrio.GetComponent<Capsule>().setNumero(1);
             //yield return new WaitForSeconds(10);
             animateur.SetBool("appuye", true);
+            crio1.GetComponent<MeshCollider>().enabled = false;
 
             //print("1");
         }
