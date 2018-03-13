@@ -192,7 +192,7 @@ public class DeplacementJacob : MonoBehaviour
         if(collision.gameObject.tag == "ascenseur")
         {
             this.transform.position = new Vector3(-14.26f, 2.375f, -12.46f);
-            transform.Rotate(new Vector3(0, 180, 0));
+            transform.Rotate(new Vector3(0, 90, 0));
             grimace.transform.position = new Vector3(-13.96f,4.71f,-12.68f);
             transform.Rotate(new Vector3(0, 90, 0));
         }
@@ -203,6 +203,9 @@ public class DeplacementJacob : MonoBehaviour
             cam3.enabled = false;
             cam4.enabled = true;
         }
+        
+
+
 
     }
     public void OnCollisionExit(Collision collision)

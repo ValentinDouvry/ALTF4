@@ -7,17 +7,20 @@ public class PackFleches1 : MonoBehaviour {
     Rigidbody body;
     Vector3 position;
     bool reset = false;
+    
+    
 
 	// Use this for initialization
 	void Awake () {
         body = this.gameObject.GetComponent<Rigidbody>();
-        position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+        position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);        
+        GetComponent<Renderer>().material.color = Color.yellow;
     }
     
 	
 	// Update is called once per frame
 	void Update () {
-        envoyerFleche();
+        //envoyerFleche();
     }
     private void Start()
     {
@@ -26,11 +29,16 @@ public class PackFleches1 : MonoBehaviour {
 
     public IEnumerator envoyerFleche()
     {
-        print("test");
-        body.AddForce(transform.forward * 400);
-        yield return new WaitForSeconds(2);
-        this.transform.position = position;
-        this.transform.Rotate(new Vector3(0, 0, 0));
+        while(true)
+        {
+            //print("test");
+            body.AddForce(transform.forward * 400);
+            //body.isKinematic = true;
+            yield return new WaitForSeconds(3);
+            this.transform.position = position;
+            this.transform.Rotate(new Vector3(0, 0, 0));
+        }
+        
 
     }      
 }

@@ -169,7 +169,7 @@ public class EnigmeTuiles : MonoBehaviour
             }
 
         }
-        if (collision.gameObject.tag == "Jacob4.0")
+        if (collision.gameObject.name == "Jacob4.0")
         {
 
             if (estValableP)
@@ -197,7 +197,7 @@ public class EnigmeTuiles : MonoBehaviour
         {
             return;
         }
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.name == "Grimace2.0")
         {
             if (actifS)
             {
@@ -206,7 +206,7 @@ public class EnigmeTuiles : MonoBehaviour
             }
 
         }
-        if (collision.gameObject.tag == "Jacob")
+        if (collision.gameObject.name == "Jacob4.0")
         {
 
             if (actifP)

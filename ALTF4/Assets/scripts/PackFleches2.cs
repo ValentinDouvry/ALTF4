@@ -7,35 +7,38 @@ public class PackFleches2 : MonoBehaviour
 
     Rigidbody body;
     Vector3 position;
+    bool reset = false;
 
     // Use this for initialization
     void Awake()
     {
         body = this.gameObject.GetComponent<Rigidbody>();
         position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+        GetComponent<Renderer>().material.color = Color.yellow;
     }
+
 
     // Update is called once per frame
     void Update()
     {
         //envoyerFleche();
-
-
+    }
+    private void Start()
+    {
+        StartCoroutine(envoyerFleche());
     }
 
-    public void envoyerFleche()
+    public IEnumerator envoyerFleche()
     {
-
-
-        body.AddForce(transform.forward * 100f);
-
-    }
-
-
-    private void reset(int num)
-    {
-
-        body.transform.position = position;
+        while (true)
+        {
+            //print("test");
+            body.AddForce(transform.forward * 400);
+            //body.isKinematic = true;
+            yield return new WaitForSeconds(4);
+            this.transform.position = position;
+            this.transform.Rotate(new Vector3(0, 0, 0));
+        }
 
 
     }
