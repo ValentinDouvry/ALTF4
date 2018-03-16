@@ -197,6 +197,7 @@ public class DeplacementJacob : MonoBehaviour
             grimace.transform.position = new Vector3(-13.96f,4.71f,-12.68f);
             corps2.transform.Rotate(new Vector3(0, 90, 0));
             finLevel1 = true;
+            grimace.GetComponent<DeplacementAllie>().level1 = true;
         }
         if (collision.gameObject.tag == "Finish")
         {

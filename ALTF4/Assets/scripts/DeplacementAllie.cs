@@ -10,8 +10,8 @@ public class DeplacementAllie : MonoBehaviour
     bool actifS = false, boutons = false, action = false;
     Animator animator;
     bool actionB = false;
-   public  GameObject hitboxGrimace;
-    public 
+    public GameObject hitboxGrimace;
+    public bool level1 = false;
 
     Vector3 direction;
 
@@ -218,9 +218,17 @@ public class DeplacementAllie : MonoBehaviour
                 cam1.enabled = false;
                 cam2.enabled = true;
                 yield return new WaitForSeconds(2);
-                corps2.transform.position = new Vector3(20.209f, 0.837f, -2.73f);
-                corps2.transform.Rotate(new Vector3(0, 180, 0));
-                this.transform.position = new Vector3(-1.656f, 0.589f, -0.55f);
+                if(level1)
+                {
+                    this.transform.position = new Vector3(-13.96f, 4.71f, -12.68f);
+                }
+                else
+                {
+                    corps2.transform.position = new Vector3(20.209f, 0.837f, -2.73f);
+                    corps2.transform.Rotate(new Vector3(0, 180, 0));
+                    this.transform.position = new Vector3(-1.656f, 0.589f, -0.55f);
+                }
+                
                 cam1.enabled = true;
                 cam2.enabled = false;
 
