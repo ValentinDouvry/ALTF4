@@ -23,7 +23,7 @@ public class DeplacementJacob : MonoBehaviour
     private float Gravity = 20.0f;
     public AudioClip music;
     private AudioSource source;
-
+    private bool checkpointlvl2 = false;
     private Vector3 _moveDir = Vector3.zero;
     /*References*/
     Animator animateur;
@@ -206,6 +206,11 @@ public class DeplacementJacob : MonoBehaviour
             cam3.enabled = false;
             cam4.enabled = true;
         }
+
+        if(collision.gameObject.tag == "checkpointLvl2")
+        {
+            checkpointlvl2 = true;
+        }
         
 
 
@@ -252,6 +257,11 @@ public class DeplacementJacob : MonoBehaviour
                     transform.Rotate(new Vector3(0, 180, 0));
                     grimace.transform.position = new Vector3(-13.96f, 4.71f, -12.68f);
                     corps2.transform.Rotate(new Vector3(0, 90, 0));
+                }
+                else if(checkpointlvl2)
+                {
+                    this.transform.position = new Vector3(9.736f, 2.42f, -12.22f);
+                    grimace.transform.position = new Vector3(6.625f, 2.956f, -12.998f);
                 }
                 else
                 {
